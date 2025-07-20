@@ -1,0 +1,36 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files
+.env*
+.env.local
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# Ignore node_modules and lockfile in firebaseadminscripts
+firebaseadminscripts/firebase/node_modules/
+firebaseadminscripts/firebase/package-lock.json
+
+# Ignore Firebase service account keys
+firebaseadminscripts/firebase/*.firebase.json
+firebaseadminscripts/firebase/*-service-account.json
