@@ -34,3 +34,6 @@ firebaseadminscripts/firebase/package-lock.json
 # Ignore Firebase service account keys
 firebaseadminscripts/firebase/*.firebase.json
 firebaseadminscripts/firebase/*-service-account.json
+# Firebase service account key (never commit!)
+firebase-admin-scripts/*.json
+
