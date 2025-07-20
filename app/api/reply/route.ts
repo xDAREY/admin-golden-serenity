@@ -31,7 +31,6 @@ export async function POST(req: Request) {
     return NextResponse.json({ success: true, data });
     
   } catch (err: any) {
-    console.error("Reply API Error:", err);
     
     // Handle specific Resend API errors
     if (err.message?.includes('API key')) {

@@ -39,7 +39,6 @@ export function DashboardSidebar({
     try {
       await onLogout()
     } catch (error) {
-      console.error("Logout failed:", error)
       setIsLoggingOut(false)
     }
     // Don't set isLoggingOut to false here as the user will be redirected

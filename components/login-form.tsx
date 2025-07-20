@@ -41,7 +41,6 @@ export function LoginForm({ onLogin }: LoginFormProps) {
       onLogin()
       router.push("/") // Optional: for redundancy
     } catch (err: any) {
-        console.error("Login failed:", err)
         // Firebase error codes: https://firebase.google.com/docs/reference/js/auth#autherrorcodes
         let friendlyMessage = "Something went wrong. Please try again."
 

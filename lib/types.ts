@@ -15,6 +15,7 @@ export interface JobApplication {
 export interface ContactMessage {
   id: string
   fullName: string
+  name: string
   email: string
   phone: string
   message: string

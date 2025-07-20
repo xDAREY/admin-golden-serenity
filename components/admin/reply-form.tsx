@@ -48,11 +48,9 @@ export function ReplyForm({ email, onSent }: { email: string; onSent?: () => voi
         // Handle API errors
         const errorMessage = data.error || "Failed to send reply"
         toast.error(errorMessage)
-        console.error("API Error:", data)
       }
     } catch (err: any) {
       // Handle network or unexpected errors
-      console.error("Send error:", err)
       toast.error("Network error: Failed to send reply")
     } finally {
       setLoading(false)

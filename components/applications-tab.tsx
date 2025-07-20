@@ -56,7 +56,6 @@ export function ApplicationsTab({ onCountChange, onTotalCountChange}: Applicatio
         const firestore = await getFirebaseDb()
         setDb(firestore)
       } catch (err) {
-        console.error("Failed to init Firebase:", err)
         setError("Failed to initialize Firebase")
         setLoading(false)
       }
@@ -102,7 +101,6 @@ export function ApplicationsTab({ onCountChange, onTotalCountChange}: Applicatio
         setError(null)
       },
       (error) => {
-        console.error("Error fetching applications:", error)
         setError("Failed to fetch applications.")
         setLoading(false)
       }
@@ -144,9 +142,7 @@ export function ApplicationsTab({ onCountChange, onTotalCountChange}: Applicatio
         lastViewed: new Date()
       })
       
-      console.log(`Updated application ${applicationId} status to ${newStatus}`)
     } catch (error) {
-      console.error("Error updating application status:", error)
     } finally {
       setUpdating(null)
     }
@@ -243,7 +239,6 @@ export function ApplicationsTab({ onCountChange, onTotalCountChange}: Applicatio
       
       toast.success("PDF downloaded successfully")
     } catch (error) {
-      console.error("Error downloading PDF:", error)
       toast.error("Failed to download PDF")
     }
   }

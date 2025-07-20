@@ -39,7 +39,6 @@ export default function Dashboard() {
             setUnreadApplicationCount(unread.length)
           },
           (error) => {
-            console.error("Job applications snapshot error:", error)
             setTotalApplicationCount(0)
             setUnreadApplicationCount(0)
           }
@@ -58,7 +57,6 @@ export default function Dashboard() {
             setUnreadInquiryCount(unread.length)
           },
           (error) => {
-            console.error("Contacts snapshot error:", error)
             setTotalInquiryCount(0)
             setUnreadInquiryCount(0)
           }
@@ -69,7 +67,6 @@ export default function Dashboard() {
           unsubscribeContacts()
         }
       } catch (err) {
-        console.error("Error setting up listeners:", err)
       }
     }
 

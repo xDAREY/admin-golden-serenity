@@ -74,7 +74,6 @@ export function InquiriesTab({ onCountChange, onTotalCountChange }: InquiriesTab
             setError(null)
           },
           (error) => {
-            console.error("Error fetching inquiries:", error)
             setError("Failed to fetch inquiries: " + error.message)
             setLoading(false)
           }
@@ -82,7 +81,6 @@ export function InquiriesTab({ onCountChange, onTotalCountChange }: InquiriesTab
 
         return unsubscribe
       } catch (error) {
-        console.error("Firestore setup error:", error)
         setError("Firestore setup error: " + (error as Error).message)
         setLoading(false)
       }
@@ -97,7 +95,7 @@ export function InquiriesTab({ onCountChange, onTotalCountChange }: InquiriesTab
     if (searchTerm) {
       filtered = filtered.filter(
         (inquiry) =>
-          inquiry.fullName?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          (inquiry.fullName || inquiry.name)?.toLowerCase().includes(searchTerm.toLowerCase()) ||
           inquiry.email?.toLowerCase().includes(searchTerm.toLowerCase()) ||
           (inquiry.phone && inquiry.phone.toLowerCase().includes(searchTerm.toLowerCase()))
       )
@@ -119,9 +117,7 @@ export function InquiriesTab({ onCountChange, onTotalCountChange }: InquiriesTab
         lastViewed: new Date()
       })
       
-      console.log(`Updated inquiry ${inquiryId} status to ${newStatus}`)
     } catch (error) {
-      console.error("Error updating inquiry status:", error)
     } finally {
       setUpdating(null)
     }
@@ -246,7 +242,7 @@ export function InquiriesTab({ onCountChange, onTotalCountChange }: InquiriesTab
                 <div>
                   <label className="text-sm font-medium text-gray-700">Full Name</label>
                   <p className="mt-1 text-sm font-semibold text-[#30495F]">
-                    {selectedInquiry.fullName || "Not provided"}
+                    {selectedInquiry.fullName || selectedInquiry.name || "Not provided"}
                   </p>
                 </div>
 
@@ -390,7 +386,7 @@ export function InquiriesTab({ onCountChange, onTotalCountChange }: InquiriesTab
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
-                      <h3 className="font-semibold text-[#30495F]">{inquiry.fullName || "Anonymous"}</h3>
+                      <h3 className="font-semibold text-[#30495F]"> {inquiry.fullName || inquiry.name || "Anonymous"}</h3>
                       <Badge className={getStatusColor(inquiry.status || "new")}>
                         {getStatusLabel(inquiry.status || "new")}
                       </Badge>

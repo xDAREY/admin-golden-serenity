@@ -83,19 +83,15 @@ const sampleInquiries = [
 
 async function seedData() {
   try {
-    console.log("Adding sample job applications...")
     for (const application of sampleApplications) {
       await addDoc(collection(db, "job_applications"), application)
     }
 
-    console.log("Adding sample contact messages...")
     for (const inquiry of sampleInquiries) {
       await addDoc(collection(db, "contact_messages"), inquiry)
     }
 
-    console.log("Sample data added successfully!")
   } catch (error) {
-    console.error("Error adding sample data:", error)
   }
 }
 

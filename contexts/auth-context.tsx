@@ -37,7 +37,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           }
         })
       } catch (error) {
-        console.error("Auth init failed:", error)
         setLoading(false)
       }
     }
@@ -54,7 +53,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const auth = await getFirebaseAuth()
       await signInWithEmailAndPassword(auth, email, password)
     } catch (error) {
-      console.error("Login failed:", error)
       throw error
     }
   }
@@ -72,9 +70,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       // Optional: Clear any cached data, localStorage, etc.
       // localStorage.removeItem('someUserData')
       
-      console.log("Successfully logged out")
     } catch (error) {
-      console.error("Logout failed:", error)
       setIsLoggingOut(false)
       throw error
     }
